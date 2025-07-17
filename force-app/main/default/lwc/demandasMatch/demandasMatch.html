@@ -1,0 +1,52 @@
+<template>
+    <lightning-card title="Demandas que coinciden con este anuncio">
+        <div class="slds-p-around_medium">
+            <template if:true={demandas}>
+                <template for:each={demandas} for:item="demanda">
+                    <div key={demanda.Id} class="slds-box slds-m-bottom_small">
+                        <p>
+                            <lightning-icon icon-name="custom:custom63" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                            <strong>Demanda: </strong>
+                            <a href={demanda.demandaLink} target="_blank">{demanda.Name}</a>
+                        </p>
+
+                        <p if:true={demanda.asesorLink}>
+                            <lightning-icon icon-name="standard:user" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                            <strong>Asesor: </strong>
+                            <a href={demanda.asesorLink} target="_blank">{demanda.Asesor__r.Name}</a>
+                        </p>
+
+                        <p if:true={demanda.contactoLink}>
+                            <lightning-icon icon-name="standard:contact" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                            <strong>Contacto: </strong>
+                            <a href={demanda.contactoLink} target="_blank">{demanda.pba__Contact__r.Name}</a>
+                        </p>
+
+                        <p>
+                            <lightning-icon icon-name="standard:household" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                            <strong>Tipo:</strong> {demanda.EV_Merchant_Agent_Department__c}
+                        </p>
+
+                        <p>
+                            <lightning-icon icon-name="utility:ribbon" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                            <strong>Metros:</strong> {demanda.pba__TotalArea_pb_min__c} m²
+                        </p>
+
+                        <p>
+                            <lightning-icon icon-name="utility:moneybag" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                            <strong>Precio:</strong> {demanda.Monthly_Net_Bare_Rent__c} €
+                        </p>
+                    </div>
+                </template>
+            </template>
+
+            <template if:true={noResults}>
+                <p>No se encontraron demandas que coincidan.</p>
+            </template>
+
+            <template if:true={error}>
+                <p class="slds-text-color_error">Error al cargar datos.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
