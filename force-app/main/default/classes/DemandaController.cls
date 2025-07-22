@@ -12,10 +12,10 @@ public with sharing class DemandaController {
         ];
 
         // Calculamos un margen del 5% para el precio y la superficie
-        Decimal precioMin = anuncio.pba__ListingPrice_pb__c * 0.95;
-        Decimal precioMax = anuncio.pba__ListingPrice_pb__c * 1.05;
-        Decimal supMin = anuncio.pba__TotalArea_pb__c * 0.95;
-        Decimal supMax = anuncio.pba__TotalArea_pb__c * 1.05;
+        Decimal precioMin = anuncio.pba__ListingPrice_pb__c * 0.90;
+        Decimal precioMax = anuncio.pba__ListingPrice_pb__c * 1.10;
+        Decimal supMin = anuncio.pba__TotalArea_pb__c * 0.90;
+        Decimal supMax = anuncio.pba__TotalArea_pb__c * 1.10;
 
         // Buscamos demandas con las mismas caracteristicas que el anuncio
         return [
@@ -36,9 +36,12 @@ public with sharing class DemandaController {
             AND pba__TotalArea_pb_min__c >= :supMin
             AND pba__TotalArea_pb_min__c <= :supMax 
             AND (pba__Status__c = '5% - Primer contacto' 
-            OR pba__Status__C = '25% - Análisis de la operación'
+                OR pba__Status__C = '25% - Análisis de la operación'
+                OR pba__Status__c = '50% - Presentación de propiedades'
+                OR pba__Status__c = '75% - Negociaciones'
             )
+            //Añadimos la condición para evitar mostrar demandas que ya correspondan con el anuncio
+            AND (ID_Anuncio__c = null OR ID_Anuncio__c != :anuncioId)
         ];
-        
     }
 }
