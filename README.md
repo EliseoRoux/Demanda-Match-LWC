@@ -10,11 +10,10 @@ Este componente tiene como propósito ayudar a los asesores comerciales a visual
 
 - 🔍 Búsqueda de demandas que coinciden por:
   - Tipo de inmueble
-  - Precio (±5%)
-  - Metros cuadrados (±5%)
+  - Precio (±10%)
+  - Metros cuadrados (±10%)
 - 📌 Filtro por estados clave:
-  - “5% - Primer contacto”
-  - “25% - Análisis de la operación”
+-    Todas las demandas que en su fase esten activas.
 - 🌟 Resaltado de la demanda más cercana en precio y superficie
 - 🔁 Sugerencias similares si no hay coincidencias exactas
 - 🔗 Enlaces directos a:
