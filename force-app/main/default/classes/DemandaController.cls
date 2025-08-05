@@ -12,10 +12,10 @@ public with sharing class DemandaController {
         ];
 
         // Calculamos un margen del 5% para el precio y la superficie
-        Decimal precioMin = anuncio.pba__ListingPrice_pb__c * 0.90;
-        Decimal precioMax = anuncio.pba__ListingPrice_pb__c * 1.10;
-        Decimal supMin = anuncio.pba__TotalArea_pb__c * 0.90;
-        Decimal supMax = anuncio.pba__TotalArea_pb__c * 1.10;
+        Decimal precioMin = anuncio.pba__ListingPrice_pb__c * 0.80;
+        Decimal precioMax = anuncio.pba__ListingPrice_pb__c * 1.20;
+        Decimal supMin = anuncio.pba__TotalArea_pb__c * 0.80;
+        Decimal supMax = anuncio.pba__TotalArea_pb__c * 1.20;
 
         // Buscamos demandas con las mismas caracteristicas que el anuncio
         return [
