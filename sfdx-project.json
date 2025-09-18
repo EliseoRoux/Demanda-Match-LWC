@@ -8,5 +8,6 @@
   "name": "demandaMatching",
   "namespace": "",
   "sfdcLoginUrl": "https://test.salesforce.com",
-  "sourceApiVersion": "64.0"
+  "sourceApiVersion": "58.0",
+  "oauthLocalPort": 1717
 }
