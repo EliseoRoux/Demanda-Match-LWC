@@ -51,7 +51,7 @@ Este proyecto está diseñado para transformar el flujo de trabajo de los agente
 ---
 
 ### 🏗️ Estructura del Proyecto
-
+```
 force-app/main/default/
 ├── classes/
 │   ├── DemandaController.cls         # Lógica Apex para el LWC
@@ -66,7 +66,7 @@ force-app/main/default/
 │       └── demandasMatch.js-meta.xml # Configuración de visibilidad
 └── triggers/
 └── DemandaTrigger.trigger        # Trigger que inicia el proceso en Demanda
-
+```
 
 ---
 
@@ -85,7 +85,6 @@ force-app/main/default/
 | **Notificaciones por Email** | ✅ **Completado** | Alertas automáticas de nuevas coincidencias. |
 | **Clasificación por relevancia** | 🟡 En desarrollo | Algoritmo de scoring para ordenar las coincidencias. |
 | **Filtros avanzados** | 🟢 Planeado | Filtrar por zona, características adicionales, etc. |
-| **Integración con Maps** | 🔴 Pendiente | Visualización geográfica de las propiedades. |
 
 ---
 
