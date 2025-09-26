@@ -1,117 +1,116 @@
-# 🏘️ Demandas Match para Salesforce
+🏘️ Demandas Match Proactivo para Salesforce
+📌 Descripción
+Este sistema integral para Salesforce automatiza la conexión entre la oferta y la demanda inmobiliaria. Consta de dos partes principales:
 
+Componente LWC de Visualización: Un componente Lightning (LWC) que se añade a la página de un anuncio y muestra en tiempo real una lista de las demandas que coinciden con sus criterios (tipo, superficie y precio con un margen del ±20%).
 
-## 📌 Descripción
+Motor de Notificaciones Proactivas: Un sistema de backend que, al crearse una nueva demanda, busca automáticamente anuncios coincidentes y envía una notificación por correo electrónico al asesor responsable del anuncio, alertándole de la nueva oportunidad de negocio.
 
-Este componente Lightning Web Component (LWC) para Salesforce permite visualizar las **demandas inmobiliarias que coinciden** con un anuncio específico. Analiza tipo de propiedad, superficie y precio dentro de un margen del 20%, facilitando así la conexión entre oferta y demanda.
+🎯 Valor del Proyecto
+Este proyecto está diseñado para transformar el flujo de trabajo de los agentes inmobiliarios al:
 
----
+🤖 Automatizar el matching entre anuncios y nuevas demandas, 24/7.
 
-## 🎯 Valor del Proyecto
+⚡ Notificar proactivamente a los agentes sobre oportunidades relevantes, sin esfuerzo manual.
 
-Este componente está diseñado para mejorar el flujo de trabajo de los agentes inmobiliarios al:
+🔍 Reducir drásticamente el tiempo de búsqueda y cruce de datos.
 
-- 🔍 Reducir el tiempo de búsqueda de propiedades adecuadas  
-- 🤖 Automatizar el matching entre anuncios y demandas  
-- 📈 Priorizar oportunidades con mayor potencial de cierre  
-- 🤝 Mejorar la experiencia del cliente mediante recomendaciones precisas  
+📈 Priorizar oportunidades con un alto potencial de cierre inmediato.
 
----
+🤝 Mejorar la experiencia del cliente con respuestas y recomendaciones más rápidas.
 
-## 🛠️ Tecnologías Clave
+🛠️ Tecnologías Clave
+Frontend: Lightning Web Components (LWC)
 
-- **Frontend:** Lightning Web Components (LWC)  
-- **Backend:** Apex con consultas SOQL  
-- **Diseño:** Salesforce Lightning Design System (SLDS)  
-- **Gestión de errores:** Manejo robusto y validaciones  
-- **Testing:** Pruebas unitarias con alta cobertura  
+Backend: Apex (Controladores, Triggers, Clases Asíncronas Queueable)
 
----
+Diseño: Salesforce Lightning Design System (SLDS)
 
-## ⚡ Funcionalidades Principales
+Testing: Pruebas unitarias de Apex con alta cobertura
 
-### 🔍 Búsqueda Inteligente
-- Coincidencia por departamento asignado  
-- Rango de precios (±20%)  
-- Superficie (±20%)  
-- Filtro por estado comercial  
+⚡ Funcionalidades Principales
+📊 Visualización Instantánea de Coincidencias
+Integración en la página del anuncio: El LWC muestra una lista clara de demandas compatibles.
 
-### 📊 Visualización de Datos
-- Tarjetas organizadas por demanda  
-- Enlaces directos a:
-  - Detalle de la demanda  
-  - Contacto relacionado  
-  - Asesor comercial  
+Enlaces directos: Accede con un clic al detalle de la demanda, al contacto y al asesor.
 
-- Datos mostrados:
-  - Tipo de propiedad  
-  - Superficie requerida  
-  - Rango de precios estimado  
+Datos clave a la vista: Tipo de propiedad, superficie y precio requerido.
 
-### 🛡️ Gestión de Casos Especiales
-- Mensajes informativos cuando no hay coincidencias  
-- Validación de datos faltantes  
-- Manejo robusto de errores  
+📧 Automatización de Notificaciones por Email
+Disparador en tiempo real: Se activa al crear una nueva demanda.
 
----
+Lógica asíncrona robusta: Utiliza un proceso Queueable para garantizar que se ejecuta después de que todas las automatizaciones (como los flujos) hayan finalizado, asegurando la consistencia de los datos.
 
-## 🏗️ Estructura del Proyecto
+Email personalizado: Envía un correo electrónico detallado al asesor del anuncio coincidente con toda la información de la nueva demanda.
 
-```
-demandas-match/
-├── demandasMatch.html # Template del componente
-├── demandasMatch.js # Lógica del componente
-├── demandasMatch.js-meta.xml # Configuración de visibilidad
-├── DemandaController.cls # Clase Apex con la lógica de negocio
-└── DemandaControllerTest.cls # Pruebas unitarias en Apex
-```
----
+Manejo de errores: Proceso seguro que registra cualquier problema en el envío de correos.
 
-## 🧪 Calidad del Código
+🔍 Búsqueda Inteligente
+Coincidencia por departamento asignado.
 
-- ✅ Cobertura de pruebas: **>90%**  
-- 🔁 **Wire Service** para datos reactivos  
-- ♻️ Componentes reutilizables  
-- ⚠️ Manejo declarativo de errores  
+Rango flexible de precios (±20%).
 
-**Buenas prácticas implementadas:**
-- Métodos cacheables  
-- Protección contra SOQL Injection  
-- Cumplimiento con SLDS  
+Rango flexible de superficie (±20%).
 
----
+Filtro por estado comercial de la demanda y del anuncio.
 
-## 🚀 Roadmap (Próximas Funcionalidades)
+🏗️ Estructura del Proyecto
+´´´
+force-app/main/default/
+├── classes/
+│   ├── DemandaController.cls         # Lógica Apex para el LWC
+│   ├── DemandaControllerTest.cls     # Pruebas para el controlador
+│   ├── DemandaTriggerHandler.cls     # Lógica que gestiona el trigger
+│   ├── DemandaMatchingQueueable.cls  # Lógica asíncrona para buscar y notificar
+│   └── DemandaTriggerTest.cls        # Pruebas para el trigger y el handler
+├── lwc/
+│   └── demandasMatch/
+│       ├── demandasMatch.html        # Template del componente LWC
+│       ├── demandasMatch.js          # Lógica del LWC
+│       └── demandasMatch.js-meta.xml # Configuración de visibilidad
+└── triggers/
+    └── DemandaTrigger.trigger        # Trigger que inicia el proceso en Demanda
+´´´
+🧪 Calidad del Código
+✅ Cobertura de pruebas: >90%
 
-| Función                  | Estado         | Descripción                         |
-|--------------------------|----------------|-------------------------------------|
-| Clasificación por relevancia | 🟡 En desarrollo | Algoritmo de scoring               |
-| Filtros avanzados           | 🟢 Planeado       | Filtro por zona, características   |
-| Integración con Maps        | 🔴 Pendiente      | Visualización geográfica           |
-| Notificaciones              | 🟢 Planeado       | Alertas de nuevas coincidencias    |
+⚡ Arquitectura Asíncrona: Uso de Queueable Apex para desacoplar procesos y respetar el orden de ejecución de Salesforce.
 
----
+🔁 Wire Service para datos reactivos en el LWC.
 
-## 📊 Métricas de Impacto (estimadas)
+⚠️ Manejo declarativo de errores y validaciones.
 
-- ⏱️ **30%** de reducción en tiempo de matching  
-- 📈 **25%** de incremento en conversiones  
-- 😊 **92%** de satisfacción de los usuarios  
+Buenas prácticas implementadas: Métodos cacheables, protección contra SOQL Injection, Bulkification.
 
----
+🚀 Roadmap
+Función	Estado	Descripción
+Notificaciones por Email	✅ Completado	Alertas automáticas de nuevas coincidencias.
+Clasificación por relevancia	🟡 En desarrollo	Algoritmo de scoring para ordenar las coincidencias.
+Filtros avanzados	🟢 Planeado	Filtrar por zona, características adicionales, etc.
+Integración con Maps	🔴 Pendiente	Visualización geográfica de las propiedades.
 
-## 👨‍💻 Habilidades Demostradas
+Exportar a Hojas de cálculo
+📊 Métricas de Impacto (estimadas)
+⏱️ 30% de reducción en tiempo de matching.
 
-- Desarrollo avanzado con LWC  
-- Arquitectura de componentes en Salesforce  
-- Diseño orientado al usuario final  
-- Optimización de consultas SOQL  
-- Implementación de pruebas unitarias  
-- Documentación profesional
+📈 25% de incremento en conversiones.
 
----
+😊 92% de satisfacción de los usuarios.
 
-## 👤 Autor
+👨‍💻 Habilidades Demostradas
+Desarrollo avanzado con LWC y Apex.
 
-**Eliseo Roux**  
+Arquitectura de Automatización Robusta (Triggers y Procesos Asíncronos).
+
+Diseño orientado al usuario final.
+
+Optimización de Consultas SOQL y manejo de grandes volúmenes de datos.
+
+Implementación de pruebas unitarias exhaustivas.
+
+Documentación profesional y clara.
+
+👤 Autor
+Eliseo Roux
+
 Proyecto desarrollado como parte del aprendizaje y profesionalización en Salesforce y desarrollo LWC.
